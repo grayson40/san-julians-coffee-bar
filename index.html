@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Julian's Coffee Bar | Authentic Colombian Coffee Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        :root {
+            --primary: #6F4E37;
+            --secondary: #C8A27B;
+            --accent: #BB7E41;
+            --background: #FDF6E9;
+            --text: #33221A;
+            --white: #FFFFFF;
+            --heading-font: 'Playfair Display', serif;
+            --body-font: 'Open Sans', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            color: var(--primary);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-family: var(--heading-font);
+        }
+
+        /* Header and Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--background);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-left: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 5px solid var(--accent);
+            z-index: -1;
+            border-radius: 10px;
+        }
+
+        .about-content h2::after {
+            left: 0;
+            transform: none;
+        }
+
+        .coffee-icon {
+            color: var(--accent);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Menu Highlights Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .menu-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-info {
+            padding: 1.5rem;
+        }
+
+        .menu-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-title h3 {
+            margin-bottom: 0;
+            font-size: 1.3rem;
+        }
+
+        .menu-price {
+            font-family: var(--heading-font);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .menu-desc {
+            margin-bottom: 1rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--primary);
+            color: var(--white);
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><text x="10" y="50" font-family="Arial" font-size="60" fill="rgba(255,255,255,0.05)">☕</text></svg>');
+            opacity: 0.2;
+        }
+
+        .testimonials h2 {
+            color: var(--white);
+        }
+
+        .testimonials-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial {
+            flex: 0 0 100%;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            margin: 0 1rem;
+        }
+
+        .testimonial-content {
+            position: relative;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-content::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 30px;
+            border-width: 20px 20px 0;
+            border-style: solid;
+            border-color: rgba(255, 255, 255, 0.05) transparent;
+        }
+
+        .testimonial-content p {
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .testimonial-rating {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-left: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+            color: var(--white);
+        }
+
+        .author-info p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .testimonial-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: var(--transition);
+        }
+
+        .testimonial-btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background-color: var(--white);
+        }
+
+        /* Location and Hours Section */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .hours-container {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .hours-list {
+            margin-top: 1.5rem;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed var(--secondary);
+        }
+
+        .hours-item:last-child {
+            border-bottom: none;
+        }
+
+        .day {
+            font-weight: 600;
+        }
+
+        .address {
+            margin-top: 2rem;
+        }
+
+        .address p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .address i {
+            margin-right: 1rem;
+            color: var(--accent);
+        }
+
+        /* Online Ordering Section */
+        .ordering {
+            background-color: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ordering::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><text x="10" y="50" font-family="Arial" font-size="60" fill="rgba(255,255,255,0.05)">🍽</text></svg>');
+            opacity: 0.1;
+        }
+
+        .delivery-partners {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .partner {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .partner:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .partner img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .partner a {
+            margin-top: 1rem;
+        }
+
+        .ordering-info {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            text-align: center;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            color: var(--white);
+            font-size: 2rem;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover i {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-details i {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--body-font);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(187, 126, 65, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .newsletter {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo-text {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-left: 0.5rem;
+        }
+
+        .footer-about p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--white);
+            opacity: 0.7;
+            margin: 0 0.5rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 991px) {
+            .about-grid,
+            .location-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero {
+                height: 80vh;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .partner {
+                width: 160px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 3rem 0;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .testimonial {
+                padding: 1rem;
+            }
+
+            .testimonial-content {
+                padding: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Utility Classes */
+        .mt-3 {
+            margin-top: 3rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="#" class="logo-text">San Julian's Coffee Bar</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="#order">Order Online</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <img src="https://images.unsplash.com/photo-1517231925375-bf2cb42917a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="San Julian's Coffee Bar Interior" class="hero-bg">
+        <div class="container">
+            <div class="hero-content animate">
+                <h1>Authentic Colombian Coffee Experience</h1>
+                <p>100% Colombian coffee. Visit us & live an experience full of warmth and flavor in every cup.</p>
+                <a href="#order" class="btn">Order Now</a>
+                <a href="#location" class="btn btn-outline">Visit Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image animate">
+                    <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Colombian Coffee Beans">
+                </div>
+                <div class="about-content animate">
+                    <span class="subtitle">Our Story</span>
+                    <h2>From Colombia to Your Cup</h2>
+                    <p>San Julian's Coffee Bar brings the authentic taste of Colombian coffee to Winter Park, FL. Our journey began in the lush mountains of Colombia, where we developed a deep appreciation for the art of coffee cultivation and preparation.</p>
+                    <p>At San Julian's, we're committed to providing not just a cup of coffee, but an experience that transports you to the warm, inviting atmosphere of a Colombian coffee farm. Every bean is carefully selected, roasted to perfection, and brewed with love to deliver that distinct Colombian flavor profile.</p>
+                    <p>Our warm, rustic environment is designed to make you feel at home while enjoying the finest coffee and delicious Colombian-inspired pastries and snacks.</p>
+                    <div class="coffee-origin mt-3">
+                        <i class="fas fa-coffee coffee-icon"></i>
+                        <h3>Direct From Colombian Farms</h3>
+                        <p>We source our beans directly from family-owned farms in Colombia's coffee regions, ensuring the highest quality and supporting sustainable farming practices. Each batch tells a story of heritage, tradition, and extraordinary care.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Highlights Section -->
+    <section class="section menu-highlights" id="menu">
+        <div class="container">
+            <div class="section-title animate">
+                <span class="subtitle">Taste Colombia</span>
+                <h2>Our Signature Offerings</h2>
+                <p>Experience the authentic flavors of Colombia with our carefully crafted coffee drinks and pastries</p>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item animate">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Café Colombiano">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-title">
+                            <h3>Café Colombiano</h3>
+                            <span class="menu-price">$4.50</span>
+                        </div>
+                        <p class="menu-desc">Our signature black coffee made from 100% Colombian beans, offering a perfect balance of boldness and smooth chocolatey notes.</p>
+                        <a href="#order" class="btn btn-outline">Order Now</a>
+                    </div>
+                </div>
+                <div class="menu-item animate">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Caramel Macchiato">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-title">
+                            <h3>Caramel Macchiato</h3>
+                            <span class="menu-price">$5.75</span>
+                        </div>
+                        <p class="menu-desc">Espresso combined with vanilla-flavored syrup, milk, and caramel sauce. A perfect sweet treat for any time of day.</p>
+                        <a href="#order" class="btn btn-outline">Order Now</a>
+                    </div>
+                </div>
+                <div class="menu-item animate">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1579888944880-d98341245702?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Colombian Cappuccino">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-title">
+                            <h3>Colombian Cappuccino</h3>
+                            <span class="menu-price">$5.25</span>
+                        </div>
+                        <p class="menu-desc">A traditional cappuccino with our special Colombian espresso blend, topped with cinnamon and cocoa powder.</p>
+                        <a href="#order" class="btn btn-outline">Order Now</a>
+                    </div>
+                </div>
+                <div class="menu-item animate">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1603743391592-36bca37bb593?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Buñuelos">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-title">
+                            <h3>Buñuelos</h3>
+                            <span class="menu-price">$3.50</span>
+                        </div>
+                        <p class="menu-desc">Traditional Colombian cheese fritters, lightly fried to golden perfection. A perfect companion to any coffee drink.</p>
+                        <a href="#order" class="btn btn-outline">Order Now</a>
+                    </div>
+                </div>
+                <div class="menu-item animate">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1617113930975-f9c7243ae527?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Pan de Bono">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-title">
+                            <h3>Pan de Bono</h3>
+                            <span class="menu-price">$3.75</span>
+                        </div>
+                        <p class="menu-desc">Warm, cheese-flavored bread rolls made with cassava flour. Freshly baked throughout the day for maximum flavor.</p>
+                        <a href="#order" class="btn btn-outline">Order Now</a>
+                    </div>
+                </div>
+                <div class="menu-item animate">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1517578701290-16049c7a9162?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="San Julian's Coffee Flight">
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-title">
+                            <h3>Coffee Flight</h3>
+                            <span class="menu-price">$9.95</span>
+                        </div>
+                        <p class="menu-desc">Sample four of our signature coffee preparations, from different regions of Colombia. Experience the diversity of flavors.</p>
+                        <a href="#order" class="btn btn-outline">Order Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="#order" class="btn">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title animate">
+                <span class="subtitle">What People Say</span>
+                <h2>Customer Reviews</h2>
+                <p>Don't just take our word for it - hear what our customers have to say about San Julian's</p>
+            </div>
+            <div class="testimonials-container animate">
+                <div class="testimonials-slider">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"The most authentic Colombian coffee I've found in Florida! The atmosphere is so welcoming, and the staff really know their coffee. The buñuelos are to die for too. My new favorite spot!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah J.">
+                            <div class="author-info">
+                                <h4>Sarah J.</h4>
+                                <p>Local Coffee Enthusiast</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"As a Colombian, I was skeptical, but San Julian's truly captures the essence of coffee from back home. The owners are passionate and it shows in every cup. A little piece of Colombia in Winter Park!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Miguel R.">
+                            <div class="author-info">
+                                <h4>Miguel R.</h4>
+                                <p>Colombian Native</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p>"I've been trying different coffee shops around Orlando for years, and San Julian's stands out. Their Café Colombiano has the perfect balance of flavors, and the Pan de Bono is addictive. Great place to work remotely too!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jennifer T.">
+                            <div class="author-info">
+                                <h4>Jennifer T.</h4>
+                                <p>Digital Nomad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                </div>
+                <div class="testimonial-controls">
+                    <div class="testimonial-btn prev-testimonial">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="testimonial-btn next-testimonial">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="https://www.google.com/maps/search/san+julian's+coffee+bar+winter+park+fl" target="_blank" class="btn">Read More Reviews on Google</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location and Hours Section -->
+    <section class="section location" id="location">
+        <div class="container">
+            <div class="section-title animate">
+                <span class="subtitle">Find Us</span>
+                <h2>Location & Hours</h2>
+                <p>Come experience the warmth of Colombian hospitality at our Winter Park location</p>
+            </div>
+            <div class="location-grid">
+                <div class="map-container animate">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28083.095339418694!2d-81.3644706301208!3d28.595595039732896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e771a7a4f7d83b%3A0xcb4f83a169f7e382!2sWinter%20Park%2C%20FL!5e0!3m2!1sen!2sus!4v1685624782634!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="hours-container animate">
+                    <h3>Our Hours</h3>
+                    <div class="hours-list">
+                        <div class="hours-item">
+                            <span class="day">Monday</span>
+                            <span class="time">7:00 AM - 7:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Tuesday</span>
+                            <span class="time">7:00 AM - 7:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Wednesday</span>
+                            <span class="time">7:00 AM - 7:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Thursday</span>
+                            <span class="time">7:00 AM - 7:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Friday</span>
+                            <span class="time">7:00 AM - 9:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Saturday</span>
+                            <span class="time">8:00 AM - 9:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Sunday</span>
+                            <span class="time">8:00 AM - 6:00 PM</span>
+                        </div>
+                    </div>
+                    <div class="address">
+                        <h3>Visit Us</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Park Avenue, Winter Park, FL 32789</p>
+                        <p><i class="fas fa-phone"></i> (407) 555-1234</p>
+                        <p><i class="fas fa-envelope"></i> hello@sanjulianscoffee.com</p>
+                    </div>
+                    <div class="mt-3">
+                        <a href="https://maps.google.com/?q=123+Park+Avenue,+Winter+Park,+FL+32789" target="_blank" class="btn"><i class="fas fa-directions"></i> Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Ordering Section -->
+    <section class="section ordering" id="order">
+        <div class="container">
+            <div class="section-title animate">
+                <span class="subtitle">Enjoy At Home</span>
+                <h2>Order Online</h2>
+                <p>Can't make it to our coffee bar? Enjoy San Julian's delivered to your doorstep!</p>
+            </div>
+            <div class="delivery-partners animate">
+                <div class="partner">
+                    <img src="https://1000logos.net/wp-content/uploads/2021/03/Grubhub-logo.png" alt="Grubhub">
+                    <a href="https://www.grubhub.com" target="_blank" class="btn btn-outline">Order Now</a>
+                </div>
+                <div class="partner">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Uber_Eats_2020_logo.svg/2560px-Uber_Eats_2020_logo.svg.png" alt="Uber Eats">
+                    <a href="https://www.ubereats.com" target="_blank" class="btn btn-outline">Order Now</a>
+                </div>
+                <div class="partner">
+                    <img src="https://1000logos.net/wp-content/uploads/2021/01/DoorDash-emblem.png" alt="DoorDash">
+                    <a href="https://www.doordash.com" target="_blank" class="btn btn-outline">Order Now</a>
+                </div>
+            </div>
+            <div class="ordering-info animate">
+                <p>We deliver within a 5-mile radius of our Winter Park location. For larger orders or catering, please call us directly at (407) 555-1234.</p>
+                <p>First-time online orders get 15% off with code <strong>WELCOME15</strong>!</p>
+                <a href="tel:4075551234" class="btn btn-primary mt-3"><i class="fas fa-phone"></i> Call For Pickup</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section-title animate">
+                <span class="subtitle">Visual Journey</span>
+                <h2>Coffee Bar Gallery</h2>
+                <p>A glimpse into the warm and inviting world of San Julian's Coffee Bar</p>
+            </div>
+            <div class="gallery-grid animate">
+                <div class="gallery-item" data-img="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Coffee Shop Interior">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+                <div class="gallery-item" data-img="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Barista Making Coffee">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+                <div class="gallery-item" data-img="https://images.unsplash.com/photo-1516550893885-9068f127a9e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+                    <img src="https://images.unsplash.com/photo-1516550893885-9068f127a9e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Colombian Coffee Beans">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+                <div class="gallery-item" data-img="https://images.unsplash.com/photo-1503481766315-7a586b20f66d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+                    <img src="https://images.unsplash.com/photo-1503481766315-7a586b20f66d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Coffee Shop Customers">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+                <div class="gallery-item" data-img="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Coffee Cupping Event">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+                <div class="gallery-item" data-img="https://images.unsplash.com/photo-1515442261605-65987783cb6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+                    <img src="https://images.unsplash.com/photo-1515442261605-65987783cb6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Espresso Preparation">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+                <div class="gallery-item" data-img="https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Colombian Coffee Farm">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+                <div class="gallery-item" data-img="https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+                    <img src="https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Coffee Latte Art">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="https://www.instagram.com" target="_blank" class="btn"><i class="fab fa-instagram"></i> Follow Us on Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Gallery Image">
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title animate">
+                <span class="subtitle">Get In Touch</span>
+                <h2>Contact Us</h2>
+                <p>Questions, feedback, or special requests? We'd love to hear from you!</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info animate">
+                    <h3>Connect With Us</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Park Avenue, Winter Park, FL 32789</p>
+                        <p><i class="fas fa-phone"></i> (407) 555-1234</p>
+                        <p><i class="fas fa-envelope"></i> hello@sanjulianscoffee.com</p>
+                        <p><i class="fas fa-clock"></i> Mon-Thu: 7AM-7PM, Fri: 7AM-9PM, Sat: 8AM-9PM, Sun: 8AM-6PM</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.twitter.com" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.tiktok.com" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://linktr.ee" target="_blank" class="social-link"><i class="fas fa-link"></i></a>
+                    </div>
+                    <div class="newsletter">
+                        <h3>Join Our Mailing List</h3>
+                        <p>Subscribe to receive updates on events, promotions, and new menu items.</p>
+                        <form class="newsletter-form">
+                            <input type="email" class="form-control" placeholder="Your email address" required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="contact-form animate">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" class="form-control" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column footer-about">
+                    <div class="footer-logo">
+                        <span class="footer-logo-text">San Julian's Coffee Bar</span>
+                    </div>
+                    <p>Authentic Colombian coffee and pastries in the heart of Winter Park, Florida. A taste of Colombia in every cup.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://linktr.ee" target="_blank"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#menu"><i class="fas fa-chevron-right"></i> Menu</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#order"><i class="fas fa-chevron-right"></i> Online Ordering</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Catering</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Private Events</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Coffee Beans Retail</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Coffee Subscription</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Loyalty Program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://maps.google.com/?q=123+Park+Avenue,+Winter+Park,+FL+32789"><i class="fas fa-map-marker-alt"></i> 123 Park Avenue, Winter Park, FL 32789</a></li>
+                        <li><a href="tel:4075551234"><i class="fas fa-phone"></i> (407) 555-1234</a></li>
+                        <li><a href="mailto:hello@sanjulianscoffee.com"><i class="fas fa-envelope"></i> hello@sanjulianscoffee.com</a></li>
+                        <li><a href="#location"><i class="fas fa-clock"></i> View Our Hours</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 San Julian's Coffee Bar. All Rights Reserved.</p>
+                <div>
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        const navLinksItems = document.querySelectorAll(".nav-links a");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navLinks.classList.toggle("active");
+        });
+
+        navLinksItems.forEach(item => {
+            item.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                navLinks.classList.remove("active");
+            });
+        });
+
+        // Sticky Header on Scroll
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+
+        // Testimonials Slider
+        const testimonialSlider = document.querySelector(".testimonials-slider");
+        const testimonials = document.querySelectorAll(".testimonial");
+        const dots = document.querySelectorAll(".dot");
+        const prevBtn = document.querySelector(".prev-testimonial");
+        const nextBtn = document.querySelector(".next-testimonial");
+        let currentIndex = 0;
+        let width = testimonials[0].clientWidth;
+        let interval;
+
+        // Recalculate testimonial width on window resize
+        window.addEventListener("resize", () => {
+            width = testimonials[0].clientWidth;
+            goToSlide(currentIndex);
+        });
+
+        function goToSlide(index) {
+            if (index < 0) {
+                index = testimonials.length - 1;
+            } else if (index >= testimonials.length) {
+                index = 0;
+            }
+            
+            currentIndex = index;
+            testimonialSlider.style.transform = `translateX(-${width * currentIndex}px)`;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle("active", i === currentIndex);
+            });
+        }
+
+        function startSliderInterval() {
+            interval = setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, 5000);
+        }
+
+        function resetInterval() {
+            clearInterval(interval);
+            startSliderInterval();
+        }
+
+        prevBtn.addEventListener("click", () => {
+            goToSlide(currentIndex - 1);
+            resetInterval();
+        });
+
+        nextBtn.addEventListener("click", () => {
+            goToSlide(currentIndex + 1);
+            resetInterval();
+        });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener("click", () => {
+                goToSlide(i);
+                resetInterval();
+            });
+        });
+
+        // Start the slider interval
+        startSliderInterval();
+
+        // Image Gallery Modal
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.modal-close');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.getAttribute('data-img');
+                modalImg.src = imgSrc;
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would normally send the form data to a server
+            // For this example, we'll just log it and show an alert
+            console.log({name, email, subject, message});
+            alert(`Thank you for your message, ${name}! We'll get back to you soon.`);
+            contactForm.reset();
+        });
+
+        // Newsletter Form Submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input[type="email"]').value;
+            
+            // Here you would normally send the email to a server
+            // For this example, we'll just log it and show an alert
+            console.log({email});
+            alert(`Thank you for subscribing to our newsletter with ${email}! You'll receive our latest updates soon.`);
+            newsletterForm.reset();
+        });
+
+        // Animate elements when they come into view
+        const observerOptions = {
+            rootMargin: '0px',
+            threshold: 0.25
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate').forEach(item => {
+            item.classList.remove('animate');
+            observer.observe(item);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Set active state for navigation links based on scroll position
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinksItems.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
